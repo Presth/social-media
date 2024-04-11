@@ -27,7 +27,7 @@ The base url of all routes in the application is `/api/v1/`
 other routes used are to prefixed with this. This can be achieved using `axios.defaults.baseUrl = "/api/v1/"` or other methods as such
 
 __Authentication__
-* To register as a usér of the application, make a POST request preferably with axios through the frontend to `/auth/register` with the follow request body {name, email, password}
+* To register as a usér of the application, make a POST request preferably with axios through the frontend to `/auth/create-account` with the follow request body {name, email, password}
 
 * To make an authentication to use the app, make a POST request through the frontend to `/auth/login` with the follow request body {email, password}. This logs the user in and also sends a cookie which will be  needee by the websocket in later section
 
@@ -47,6 +47,9 @@ make a GET request to `/posts/others` to get the list of other peoples post. The
 
 ## __Like a Posts__
 make a POST request to `/posts/:postId/like` to like the post amd repeat the same to undo the like
+
+## __Comment a Posts__
+make a POST request to `/posts/:postId/comment` to make a comment on a post
  
 ## __Get single Post__
 make a GET request to `/posts/:postId` to  get the data of a single post - content, attachment, likes and another array containing other users comments
@@ -77,7 +80,7 @@ First handle attachments upload if there exist as explained in the next setion t
  
  # Summary
  Use Case         Method        Route                                     Params
-* Register          POST            /api/v1/auth/register        name, email, password
+* Register          POST            /api/v1/auth/create-account        name, email, password
 * Login              POST            /api/v1/auth/login              email, password
 * Logout           POST            /api/v1/auth/logout
 * All users         GET              /api/v1/users
@@ -88,3 +91,4 @@ First handle attachments upload if there exist as explained in the next setion t
 * Upload File    POST           /api/v1/upload                     file, currentChunk, totalChunk, chuckNumber
 * Single Post     GET              /api/v1/posts/:postId
 * Like Posts       POST            /api/v1/posts/:postId/like
+* Comment Posts    POST            /api/v1/posts/:postId/comment    comment
