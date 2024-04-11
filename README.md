@@ -159,6 +159,6 @@ document.getElementById('create-post').addEventListener('submit', async (e) => {
 ## Environment Variable Setup
 The following are needed to be added in the .env file
 * PORT
-* MONGO_URL
+* MONGODB_URL
 * JWT_SECRET
-* SESSION_SECRET
+* SESSION_KEY
