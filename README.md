@@ -154,3 +154,11 @@ document.getElementById('create-post').addEventListener('submit', async (e) => {
 * Single Post     GET              /api/v1/posts/:postId
 * Like Posts       POST            /api/v1/posts/:postId/like
 * Comment Posts    POST            /api/v1/posts/:postId/comment    comment
+
+
+## Environment Variable Setup
+The following are needed to be added in the .env file
+* PORT
+* MONGO_URL
+* JWT_SECRET
+* SESSION_SECRET
