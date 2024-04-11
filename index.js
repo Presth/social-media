@@ -28,8 +28,6 @@ app.use(express.json())
 app.use(express.static("./public"))
 app.use(expressSession({ secret: process.env.SESSION_KEY, saveUninitialized: false }))
 
-// app.use(bodyParser.urlencoded({ extended: false }))
-
 
 // routes setup
 app.use("/api/v1/auth", AuthRoutes)
