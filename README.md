@@ -3,26 +3,26 @@
 __TABLE OF CONTENT__
 * Getting Started
 * API Routes
->Authentication
->Get other users
->Follow a user
->Get personal posts
->Get others(who u follow) posts
->Create new post
->Get a single post with comments
->like post
+> Authentication
+> Get other users
+> Follow a user
+> Get personal posts
+> Get others(who u follow) posts
+> Create new post
+> Get a single post with comments
+> like post
 
-*Pagination
+* Pagination
 * File Upload
 * Websocket Usage
 
-##Getting Started 
-Navigate to the project root and run `npm install` to install the utilized packages
-Setup the environment variables using the sample in the root folder as a guide
-Proceed to running the service `npm start'
+## Getting Started 
+* Navigate to the project root and run `npm install` to install the utilized packages
+* Setup the environment variables using the sample in the root folder as a guide
+* Proceed to running the service `npm start'
 
 
-##API Routes
+## API Routes
 The base url of all routes in the application is `/api/v1/`
 other routes used are to prefixed with this. This can be achieved using `axios.defaults.baseUrl = "/api/v1/"` or other methods as such
 
@@ -33,29 +33,29 @@ __Authentication__
 
 * a POST request through the frontend to `/auth/logout` to destroy the authentication
 
-__Get users__
+## __Get users__
 make a GET request to `/users` to get a list of users
 
-__Follow users__
+## __Follow users__
 make a POST request to `/users/:userId` to follow that user and and another request to the same route to unfollow
 
-__Get Personal Posts__
+## __Get Personal Posts__
 make a GET request to `/posts` to get the list of the user's post. The response return an array of objects with the following properties - content, attachment, id, likes
 
-__Get other people Posts__
+## __Get other people Posts__
 make a GET request to `/posts/others` to get the list of other peoples post. The response return an array of objects with the following properties - content, attachment, id, likes
 
-__Like a Posts__
+## __Like a Posts__
 make a POST request to `/posts/:postId/like` to like the post amd repeat the same to undo the like
  
- __Get single Post__
+## __Get single Post__
 make a GET request to `/posts/:postId` to  get the data of a single post - content, attachment, likes and another array containing other users comments
  
- __Create Post__
+## __Create Post__
 First handle attachments upload if there exist as explained in the next setion the proceed to create new post with the file path of the attachment uploaded return by the file upload handler and pass it to the create post request.. To add the post, make a POST request to `/posts/create` with the request body containing the content and the attachment
  
  
- ##Pagination
+## Pagination
  To utilize pagination, a urlsearchparam is needed as absence will lead to geting only data of first page. the urlsearchparam should have a name of "page"
  
  
@@ -68,25 +68,23 @@ First handle attachments upload if there exist as explained in the next setion t
  ```
  
  
- ##Websockect
+ ## Websockect
  Real time notification is achieved with websocket. For each client to receive appropriate notification, Cookie set by authentication should be sent to the websocket server as a token variable after connection is established and when appropriate message is sent, the responsible client receives it.
  
  ===
  A simple HTML and JavaScript file have been added to the public folder which utilizes all the routes and connection
  
  
- #Summary
+ # Summary
  Use Case         Method        Route                                     Params
- *Register          POST            /api/v1/auth/register        name, email, password
- *Login              POST            /api/v1/auth/login              email, password
- *Logout           POST            /api/v1/auth/logout
- *All users         GET              /api/v1/users
- *Follow User    POST            /api/v1/users/:userId/follow
- *My Posts        GET              /api/v1/posts
- *Others Posts   GET              /api/v1/posts/others
- *Create Post     POST           /api/v1/posts                      content, attachment
-  *Upload File    POST           /api/v1/upload                     file, currentChunk, totalChunk, chuckNumber
- *Single Post     GET              /api/v1/posts/:postId
- *Like Posts       POST            /api/v1/posts/:postId/like
- 
- 
+* Register          POST            /api/v1/auth/register        name, email, password
+* Login              POST            /api/v1/auth/login              email, password
+* Logout           POST            /api/v1/auth/logout
+* All users         GET              /api/v1/users
+* Follow User    POST            /api/v1/users/:userId/follow
+* My Posts        GET              /api/v1/posts
+* Others Posts   GET              /api/v1/posts/others
+* Create Post     POST           /api/v1/posts                      content, attachment
+* Upload File    POST           /api/v1/upload                     file, currentChunk, totalChunk, chuckNumber
+* Single Post     GET              /api/v1/posts/:postId
+* Like Posts       POST            /api/v1/posts/:postId/like
