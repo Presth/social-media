@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Social media</title>
+</head>
+
+<body>
+     <form action="" id="login">
+          <h4>Login form</h4>
+          <input type="text" id="login-email"><br>
+          <input type="password" name="" id="login-password">
+          <button>Login </button>
+     </form>
+
+     <form action="" id="signup">
+          <h4>Register form</h4>
+
+          Fullname
+          <input type="text" id="fullname"><br>
+          Email <input type="text" id="email"><br>
+          Password<input type="password" name="" id="password">
+          <button>signup</button>
+     </form>
+
+     <div id="message"></div>
+     <div id="users"></div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.js"
+     integrity="sha512-pmaEGtUAy7E5gRmwjLqQAD/QWw0dL4Z59b6b+2HQkqQwQ+HcPLLb9/KbUNo5zr10WuXmbivK9nYVZOyDkMgZMg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+     msg_box = document.getElementById('message')
+
+     const login = async () => {
+          let login_email = document.getElementById('login-email').value;
+          let login_pass = document.getElementById('login-password').value;
+
+          const loginReq = await axios.post("/api/v1/auth/login", { email: login_email, password: login_pass })
+          console.log(loginReq)
+          location.href = 'posts.html'
+     }
+
+     const signup = async () => {
+          let signup_name = document.getElementById('fullname').value;
+          let signup_email = document.getElementById('email').value;
+          let signup_pass = document.getElementById('password').value;
+
+          const signReq = await axios.post("/api/v1/auth/create-account",
+               { email: signup_email, password: signup_pass, name: signup_name })
+
+          console.log(signReq)
+          msg_box.innerHTML = JSON.stringify(loginReq)
+     }
+
+     document.getElementById('login').addEventListener('submit', (e) => {
+          e.preventDefault()
+          login()
+     })
+
+     document.getElementById('signup').addEventListener('submit', (e) => {
+          e.preventDefault()
+          signup()
+     })
+</script>
+
+</html>
