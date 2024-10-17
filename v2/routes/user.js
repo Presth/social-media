@@ -8,7 +8,7 @@ import {
   deleteExistingProfilePic,
   updateProfile,
 } from "../controllers/user.js";
-import { upload } from "../config/fileUpload.js";
+import { upload, uploadToExt } from "../config/fileUpload.js";
 import { updateUserPassword } from "../controllers/auth.js";
 
 const router = Router();
@@ -24,6 +24,7 @@ router.post(
   "/picture",
   upload.single("file"),
   deleteExistingProfilePic,
+  uploadToExt,
   updateProfilePic
 );
 
